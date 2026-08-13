@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    name: Tests (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install . pytest
+
+      - name: Run tests
+        # The suite runs against a stub client, so no token and no network.
+        run: python -m pytest tests -q
+
+  qiskit-versions:
+    name: Qiskit ${{ matrix.qiskit }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        qiskit: ["1.*", "2.*"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install with pinned Qiskit
+        # BackendV2 and Target are stable across the 1.x/2.x boundary, but this
+        # provider builds a Target by hand, so both are exercised rather than
+        # assumed compatible.
+        run: |
+          python -m pip install --upgrade pip
+          pip install . pytest
+          pip install "qiskit==${{ matrix.qiskit }}"
+      - run: |
+          python -c "import qiskit; print('qiskit', qiskit.__version__)"
+          python -m pytest tests -q
+
+  build-dist:
+    name: Build distributions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m pip install --upgrade pip build twine
+          python -m build
+          python -m twine check dist/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
