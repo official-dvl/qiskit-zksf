@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "qiskit-zksf: Qiskit provider for the Zero Kelvin Simulation Foundry"
+doi: 10.5281/zenodo.21851381
+message: "If you use this provider or the certification protocols it surfaces in published work, please cite the protocol paper as below."
+type: software
+authors:
+  - name: "ZKSF.org (Zero Kelvin Simulation Foundry)"
+    email: info@zksf.org
+    website: "https://zksf.org"
+  - name: "Digital Venture Labs LLC"
+repository-code: "https://github.com/official-dvl/qiskit-zksf"
+url: "https://zksf.org"
+abstract: >-
+  Qiskit provider exposing ZKSF simulation engines and quantum hardware as
+  BackendV2 backends, so existing Qiskit circuits run against exact statevector,
+  tensor-network, stabilizer, Pauli-propagation, noisy or real-hardware engines
+  by changing the backend rather than the code. Every approximate result carries
+  a documented accuracy statement under the ZCC-v0.1 protocol, or a measured
+  hardware fidelity under ZHF-v0.1, reachable through job.error_info(). Each
+  engine is a separate backend with its own qubit limit and gate set, so a
+  circuit an engine cannot run is rejected at transpile time rather than after
+  submission.
+keywords:
+  - quantum computing
+  - qiskit
+  - qiskit provider
+  - quantum circuit simulation
+  - tensor networks
+  - error bounds
+  - certification
+license: MIT
+version: 0.1.0

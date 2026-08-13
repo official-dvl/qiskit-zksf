@@ -1,0 +1,50 @@
+[project]
+name = "qiskit-zksf"
+version = "0.1.0"
+description = "Qiskit provider for ZKSF: run circuits on CPU, GPU or real quantum hardware with a documented accuracy statement on every result"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "ZKSF", email = "info@zksf.org" }]
+keywords = [
+  "quantum",
+  "quantum computing",
+  "qiskit",
+  "qiskit provider",
+  "quantum circuit simulator",
+  "tensor network",
+  "matrix product state",
+  "stabilizer",
+  "QPU",
+  "error bounds",
+  "certification",
+]
+dependencies = ["qiskit>=1.0", "qsim-sdk>=0.2"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Physics",
+]
+
+[project.urls]
+Homepage = "https://zksf.org"
+Documentation = "https://zksf.org/docs"
+Console = "https://app.zksf.org"
+Source = "https://github.com/official-dvl/qiskit-zksf"
+Issues = "https://github.com/official-dvl/qiskit-zksf/issues"
+Specification = "https://doi.org/10.5281/zenodo.21851381"
+Verifier = "https://pypi.org/project/zcc-verify/"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["qiskit_zksf*"]
