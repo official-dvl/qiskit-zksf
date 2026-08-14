@@ -14,14 +14,18 @@ approximate result.
 """
 from qiskit_zksf.backend import ENGINES, EngineSpec, ZKSFBackend
 from qiskit_zksf.job import JobRejected, ZKSFJob
+from qiskit_zksf.primitives import TooManyJobs, ZKSFEstimator, ZKSFSampler
 from qiskit_zksf.provider import ZKSFProvider
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __all__ = [
     "ZKSFProvider",
     "ZKSFBackend",
     "ZKSFJob",
+    "ZKSFSampler",
+    "ZKSFEstimator",
     "JobRejected",
+    "TooManyJobs",
     "EngineSpec",
     "ENGINES",
 ]

@@ -52,6 +52,21 @@ class ZKSFProvider:
                 f"{', '.join(sorted(self._backends))}"
             ) from None
 
+    def sampler(self, backend: str = "zksf_auto", **options):
+        """A SamplerV2 bound to one engine, for outcome distributions."""
+        from qiskit_zksf.primitives import ZKSFSampler
+
+        return ZKSFSampler(self.backend(backend), **options)
+
+    def estimator(self, backend: str = "zksf_pauli", **options):
+        """An EstimatorV2 bound to one engine, for expectation values.
+
+        Defaults to Pauli propagation, which answers with an expectation value
+        directly and bounds it by the discarded coefficient mass."""
+        from qiskit_zksf.primitives import ZKSFEstimator
+
+        return ZKSFEstimator(self.backend(backend), **options)
+
     def estimate(self, circuit, shots: int = 1024, backend: str = "zksf_auto") -> dict:
         """Free pre-run check: engine, predicted runtime and cost, or why not.
 
