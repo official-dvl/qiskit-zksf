@@ -22,9 +22,15 @@ from qiskit.primitives import (
     PubResult,
     SamplerPubResult,
 )
-from qiskit.primitives.containers import EstimatorPub, SamplerPub
+
+# Imported from their defining submodules rather than from the package. Qiskit
+# 2.x re-exports both from qiskit.primitives.containers; 1.x does not, and the
+# package __init__ imports this module, so the shorter path would make the whole
+# provider fail to import on 1.x rather than merely losing the primitives.
 from qiskit.primitives.containers.bit_array import BitArray
 from qiskit.primitives.containers.data_bin import DataBin
+from qiskit.primitives.containers.estimator_pub import EstimatorPub
+from qiskit.primitives.containers.sampler_pub import SamplerPub
 
 # Submitting more than this many jobs from a single run() is almost always a
 # parameter sweep the caller did not realise would be billed per point.
