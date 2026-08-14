@@ -34,6 +34,59 @@ print(job.error_info())     # how far that answer may be from the truth
 The token comes from the console at [app.zksf.org](https://app.zksf.org), or from the
 `ZKSF_TOKEN` environment variable.
 
+## V2 primitives
+
+Current Qiskit code builds a primitive rather than calling `backend.run()`, so both are
+provided. They follow Qiskit's own semantics: one result per PUB, with parameter bindings
+carried in the array shape.
+
+```python
+from qiskit_zksf import ZKSFProvider
+
+provider = ZKSFProvider()
+
+# Sampler: outcome distributions
+sampler = provider.sampler()
+result = sampler.run([qc], shots=1000).result()
+result[0].data.meas.get_counts()
+result[0].metadata["error_info"]        # the accuracy statement
+
+# Estimator: expectation values
+from qiskit.quantum_info import SparsePauliOp
+
+estimator = provider.estimator()
+result = estimator.run([(circuit, SparsePauliOp("ZZ"))]).result()
+result[0].data.evs                       # the value
+result[0].data.stds                      # the bound on it, not a guess
+```
+
+`stds` is not invented. Where the engine reports a measured bound it is passed through
+unchanged, so an EstimatorV2 standard error means the same thing the protocol means.
+
+`provider.estimator()` defaults to the Pauli propagation engine, which answers with an
+expectation value directly and bounds it by the discarded coefficient mass.
+
+### Parameter sweeps cost money
+
+A local primitive will evaluate a thousand parameter bindings without comment. Here every
+binding is a separate billed job, because the service has no batch endpoint yet, so a
+sweep is refused rather than silently charged:
+
+```python
+sampler.run([(circuit, thousand_angles)])
+# TooManyJobs: this run would submit 1000 separate billed jobs ...
+```
+
+Raise the limit deliberately when that is what you want:
+
+```python
+provider.sampler(max_jobs_per_run=200)
+```
+
+Combining an observable array with a parameter sweep in one PUB is not supported. It
+raises rather than guessing a broadcast order, since guessing would mislabel every value
+returned.
+
 ## Why this exists
 
 Exact statevector simulation stops near 30 to 32 qubits, because state size grows as
