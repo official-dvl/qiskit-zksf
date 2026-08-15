@@ -116,7 +116,7 @@ specified in a citable paper: [doi.org/10.5281/zenodo.21851381](https://doi.org/
 |---|---|---|---|
 | `zksf_auto` | router picks | 128 | Default. Chooses the cheapest adequate engine |
 | `zksf_exact_cpu` | `exact.cpu` | 30 | Exact statevector |
-| `zksf_exact_gpu` | `exact.gpu` | 29 | Exact statevector on GPU |
+| `zksf_exact_gpu` | `exact.gpu` | 32 | Exact statevector on GPU, size-routed across two tiers |
 | `zksf_mps` | `mps.quimb.cpu` | 128 | Tensor network, supports `certified=True` |
 | `zksf_mps_aer` | `mps.aer.cpu` | 128 | Tensor network (Aer) |
 | `zksf_clifford` | `clifford` | 5000 | Stabilizer, exact for Clifford circuits |

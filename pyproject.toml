@@ -1,6 +1,6 @@
 [project]
 name = "qiskit-zksf"
-version = "0.2.0"
+version = "0.2.1"
 description = "Qiskit provider for ZKSF: run circuits on CPU, GPU or real quantum hardware with a documented accuracy statement on every result"
 readme = "README.md"
 requires-python = ">=3.10"
