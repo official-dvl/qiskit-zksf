@@ -96,10 +96,23 @@ def test_filter_by_qubit_count_and_hardware(provider):
 # --------------------------------------------------------------------- target
 
 def test_qubit_limits_match_the_service(provider):
+    """Declared limits are the transpiler's ceiling, so one that is too LOW
+    rejects a circuit locally that production would have run. zksf_exact_gpu
+    shipped at 29 in 0.2.0 while the service reached 32, which is exactly that
+    failure. Any change here should be checked against the engines."""
     p, _ = provider()
-    assert p.backend("zksf_exact_cpu").num_qubits == 30
-    assert p.backend("zksf_rigetti").num_qubits == 108
-    assert p.backend("zksf_ionq").num_qubits == 36
+    expected = {
+        "zksf_auto": 128,
+        "zksf_exact_cpu": 30,        # MAX_STATEVECTOR_QUBITS
+        "zksf_exact_gpu": 32,        # H100 tier ceiling, not the 30-qubit tier
+        "zksf_mps": 128,             # MPS_MAX_QUBITS
+        "zksf_mps_aer": 128,
+        "zksf_noisy": 30,            # density matrix, same statevector bound
+        "zksf_rigetti": 108,         # Cepheus-1-108Q
+        "zksf_ionq": 36,             # Forte-1
+    }
+    for name, limit in expected.items():
+        assert p.backend(name).num_qubits == limit, f"{name} limit drifted"
 
 
 def test_stabilizer_backend_advertises_no_non_clifford_gate(provider):
