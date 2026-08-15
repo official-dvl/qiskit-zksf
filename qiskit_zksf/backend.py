@@ -60,8 +60,12 @@ ENGINES: tuple[EngineSpec, ...] = (
                "Router picks the cheapest adequate engine for the circuit"),
     EngineSpec("zksf_exact_cpu", "exact.cpu", 30,
                "Exact statevector on CPU"),
-    EngineSpec("zksf_exact_gpu", "exact.gpu", 29,
-               "Exact statevector on GPU"),
+    # 32, not 29. Exact statevector is VRAM-bound, and the service routes by
+    # size across two GPU tiers: a 24GB endpoint up to 30 qubits and an H100
+    # endpoint to 32. Declaring the lower tier made the transpiler reject a
+    # 31 or 32 qubit circuit locally that production runs perfectly well.
+    EngineSpec("zksf_exact_gpu", "exact.gpu", 32,
+               "Exact statevector on GPU, size-routed across two tiers"),
     EngineSpec("zksf_mps", "mps.quimb.cpu", 128,
                "Matrix product state (quimb), supports certified=True"),
     EngineSpec("zksf_mps_aer", "mps.aer.cpu", 128,
