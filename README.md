@@ -1,8 +1,8 @@
 # qiskit-zksf
 
 [![CI](https://github.com/official-dvl/qiskit-zksf/actions/workflows/ci.yml/badge.svg)](https://github.com/official-dvl/qiskit-zksf/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/qiskit-zksf.svg?v=3)](https://pypi.org/project/qiskit-zksf/)
-[![Python](https://img.shields.io/pypi/pyversions/qiskit-zksf.svg?v=3)](https://pypi.org/project/qiskit-zksf/)
+[![PyPI](https://img.shields.io/pypi/v/qiskit-zksf.svg?v=4)](https://pypi.org/project/qiskit-zksf/)
+[![Python](https://img.shields.io/pypi/pyversions/qiskit-zksf.svg?v=4)](https://pypi.org/project/qiskit-zksf/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21851381-blue.svg)](https://doi.org/10.5281/zenodo.21851381)
 
