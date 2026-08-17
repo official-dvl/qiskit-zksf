@@ -3,8 +3,10 @@
 [![CI](https://github.com/official-dvl/qiskit-zksf/actions/workflows/ci.yml/badge.svg)](https://github.com/official-dvl/qiskit-zksf/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/qiskit-zksf.svg?v=4)](https://pypi.org/project/qiskit-zksf/)
 [![Python](https://img.shields.io/pypi/pyversions/qiskit-zksf.svg?v=4)](https://pypi.org/project/qiskit-zksf/)
+[![Qiskit](https://img.shields.io/badge/Qiskit-%E2%89%A5%201.0-6133BD?logo=qiskit&logoColor=white)](https://github.com/Qiskit/qiskit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21851381-blue.svg)](https://doi.org/10.5281/zenodo.21851381)
+[![Qiskit Ecosystem](https://img.shields.io/badge/Qiskit-Ecosystem-6133BD?logo=qiskit&logoColor=white)](https://qiskit.github.io/ecosystem/)
 
 Qiskit provider for **ZKSF** (Zero Kelvin Simulation Foundry). Point circuits you have
 already written at classical simulators, GPU accelerators, or real quantum processors,
