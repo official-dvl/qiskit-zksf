@@ -124,8 +124,11 @@ specified in a citable paper: [doi.org/10.5281/zenodo.21851381](https://doi.org/
 | `zksf_clifford` | `clifford` | 5000 | Stabilizer, exact for Clifford circuits |
 | `zksf_pauli` | `pauli.cpu` | 1024 | Heisenberg picture, needs an observable |
 | `zksf_noisy` | `noisy.cpu` | 30 | Device noise model, supports `mitigate=True` |
-| `zksf_rigetti` | `qpu.rigetti` | 108 | Rigetti Cepheus-1, real hardware |
-| `zksf_ionq` | `qpu.ionq` | 36 | IonQ Forte-1, real hardware |
+| `zksf_rigetti` | `qpu.rigetti` | 108 | Rigetti Cepheus-1-108Q superconducting, real hardware |
+| `zksf_ionq` | `qpu.ionq` | 36 | IonQ Forte Enterprise 1, real hardware |
+| `zksf_iqm_emerald` | `qpu.iqm.emerald` | 54 | IQM Emerald superconducting, real hardware |
+| `zksf_iqm_garnet` | `qpu.iqm.garnet` | 20 | IQM Garnet superconducting, real hardware |
+| `zksf_aqt_ibex` | `qpu.aqt.ibex` | 12 | AQT IBEX Q1 trapped-ion, real hardware |
 
 ```python
 provider = ZKSFProvider()
