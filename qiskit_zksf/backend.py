@@ -61,7 +61,7 @@ ENGINES: tuple[EngineSpec, ...] = (
     EngineSpec("zksf_exact_cpu", "exact.cpu", 30,
                "Exact statevector on CPU"),
     # 32, not 29. Exact statevector is VRAM-bound, and the service routes by
-    # size across two GPU tiers: a 24GB endpoint up to 30 qubits and an H100
+    # size across two GPU tiers: a 24GB endpoint up to 30 qubits and a 96GB
     # endpoint to 32. Declaring the lower tier made the transpiler reject a
     # 31 or 32 qubit circuit locally that production runs perfectly well.
     EngineSpec("zksf_exact_gpu", "exact.gpu", 32,
@@ -80,7 +80,18 @@ ENGINES: tuple[EngineSpec, ...] = (
     EngineSpec("zksf_rigetti", "qpu.rigetti", 108,
                "Rigetti Cepheus-1 superconducting hardware", hardware=True),
     EngineSpec("zksf_ionq", "qpu.ionq", 36,
-               "IonQ Forte-1 trapped-ion hardware", hardware=True),
+               "IonQ Forte Enterprise 1 trapped-ion hardware", hardware=True),
+    # The service has offered these three for a while and this provider did not
+    # expose them, so `provider.backends(hardware=True)` returned two of the
+    # five gate processors and a Qiskit user had no route to the other three.
+    # Qubit counts are braket_qpu.DEVICES max_qubits, read from the registry
+    # rather than from prose.
+    EngineSpec("zksf_iqm_garnet", "qpu.iqm.garnet", 20,
+               "IQM Garnet superconducting hardware", hardware=True),
+    EngineSpec("zksf_iqm_emerald", "qpu.iqm.emerald", 54,
+               "IQM Emerald superconducting hardware", hardware=True),
+    EngineSpec("zksf_aqt_ibex", "qpu.aqt.ibex", 12,
+               "AQT IBEX Q1 trapped-ion hardware", hardware=True),
 )
 
 
