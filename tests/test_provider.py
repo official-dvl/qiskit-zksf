@@ -90,7 +90,10 @@ def test_filter_by_qubit_count_and_hardware(provider):
     p, _ = provider()
     assert all(b.num_qubits >= 100 for b in p.backends(min_num_qubits=100))
     names = {b.name for b in p.backends(hardware=True)}
-    assert names == {"zksf_rigetti", "zksf_ionq"}
+    assert names == {
+        "zksf_rigetti", "zksf_ionq",
+        "zksf_iqm_garnet", "zksf_iqm_emerald", "zksf_aqt_ibex",
+    }, "every gate QPU the service offers should be reachable from Qiskit"
 
 
 # --------------------------------------------------------------------- target
@@ -109,7 +112,10 @@ def test_qubit_limits_match_the_service(provider):
         "zksf_mps_aer": 128,
         "zksf_noisy": 30,            # density matrix, same statevector bound
         "zksf_rigetti": 108,         # Cepheus-1-108Q
-        "zksf_ionq": 36,             # Forte-1
+        "zksf_ionq": 36,             # Forte Enterprise 1
+        "zksf_iqm_garnet": 20,       # braket_qpu.DEVICES max_qubits
+        "zksf_iqm_emerald": 54,
+        "zksf_aqt_ibex": 12,
     }
     for name, limit in expected.items():
         assert p.backend(name).num_qubits == limit, f"{name} limit drifted"
