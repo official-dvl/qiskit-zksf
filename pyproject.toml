@@ -1,6 +1,6 @@
 [project]
 name = "qiskit-zksf"
-version = "0.3.0"
+version = "0.3.1"
 description = "Qiskit provider for ZKSF: run circuits on CPU, GPU or real quantum hardware with a documented accuracy statement on every result"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -19,7 +19,7 @@ keywords = [
   "error bounds",
   "certification",
 ]
-dependencies = ["qiskit>=1.0", "qsim-sdk>=0.2"]
+dependencies = ["qiskit>=1.0,<3", "qsim-sdk>=0.2"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Science/Research",
