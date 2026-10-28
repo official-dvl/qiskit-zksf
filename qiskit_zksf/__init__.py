@@ -17,7 +17,7 @@ from qiskit_zksf.job import JobRejected, ZKSFJob
 from qiskit_zksf.primitives import TooManyJobs, ZKSFEstimator, ZKSFSampler
 from qiskit_zksf.provider import ZKSFProvider
 
-__version__ = "0.3.1"
+__version__ = "0.3.2"
 __all__ = [
     "ZKSFProvider",
     "ZKSFBackend",
