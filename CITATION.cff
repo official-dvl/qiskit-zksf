@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "qiskit-zksf: Qiskit provider for the Zero Kelvin Simulation Foundry"
-doi: 10.5281/zenodo.21851381
+doi: 10.5281/zenodo.21851380
 message: "If you use this provider or the certification protocols it surfaces in published work, please cite the protocol paper as below."
 type: software
 authors:
@@ -15,8 +15,10 @@ abstract: >-
   BackendV2 backends, so existing Qiskit circuits run against exact statevector,
   tensor-network, stabilizer, Pauli-propagation, noisy or real-hardware engines
   by changing the backend rather than the code. Every approximate result carries
-  a documented accuracy statement under the ZCC-v0.1 protocol, or a measured
-  hardware fidelity under ZHF-v0.1, reachable through job.error_info(). Each
+  a documented accuracy statement under the ZCC-v0.1 protocol, a measured
+  hardware fidelity under ZHF-v0.1, or, for an error-mitigated value, a
+  statistical estimate under ZCC-Estimate-v0.2, reachable through
+  job.error_info(). Each
   engine is a separate backend with its own qubit limit and gate set, so a
   circuit an engine cannot run is rejected at transpile time rather than after
   submission.
@@ -29,4 +31,4 @@ keywords:
   - error bounds
   - certification
 license: MIT
-version: 0.3.1
+version: 0.3.2

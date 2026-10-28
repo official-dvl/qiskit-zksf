@@ -5,8 +5,9 @@
 [![Python](https://img.shields.io/pypi/pyversions/qiskit-zksf.svg?v=4)](https://pypi.org/project/qiskit-zksf/)
 [![Qiskit](https://img.shields.io/badge/Qiskit-%E2%89%A5%201.0-6133BD?logo=qiskit&logoColor=white)](https://github.com/Qiskit/qiskit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21851381-blue.svg)](https://doi.org/10.5281/zenodo.21851381)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21851380-blue.svg)](https://doi.org/10.5281/zenodo.21851380)
 [![Qiskit Ecosystem](https://img.shields.io/badge/Qiskit-Ecosystem-6133BD?logo=qiskit&logoColor=white)](https://qiskit.github.io/ecosystem/)
+[![Quantum computing mobile app on Google Play](https://img.shields.io/badge/Mobile_app-Google_Play-34A853?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.quantumcomputing.app)
 
 Qiskit provider for **ZKSF** (Zero Kelvin Simulation Foundry). Point circuits you have
 already written at classical simulators, GPU accelerators, or real quantum processors,
@@ -110,7 +111,7 @@ the error quantities exist inside the simulation. `job.error_info()` is that num
 
 Any finished job can be minted into a public certificate that anyone can check without
 an account, using [`zcc-verify`](https://pypi.org/project/zcc-verify/). The protocols are
-specified in a citable paper: [doi.org/10.5281/zenodo.21851381](https://doi.org/10.5281/zenodo.21851381).
+specified in a citable paper: [doi.org/10.5281/zenodo.21851380](https://doi.org/10.5281/zenodo.21851380).
 
 ## Backends
 
@@ -197,7 +198,7 @@ except JobRejected as exc:
 - Python SDK: [`qsim-sdk`](https://pypi.org/project/qsim-sdk/)
 - Certificate checker: [`zcc-verify`](https://pypi.org/project/zcc-verify/)
 - Android app: [Google Play](https://play.google.com/store/apps/details?id=com.quantumcomputing.app)
-- Protocol paper: [10.5281/zenodo.21851381](https://doi.org/10.5281/zenodo.21851381)
+- Protocol paper: [10.5281/zenodo.21851380](https://doi.org/10.5281/zenodo.21851380)
 
 ## Licence
 
